@@ -14,7 +14,11 @@ return new class extends Migration
     public function up()
     {
         Schema::create('list_ukms', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
+            $table->string('nama_ukm')->nullable();
+            $table->string('anggota')->nullable();
+            $table->foreignId('ketua_id')->references('id')->on('users');
+            $table->text('image_logo')->nullable();
             $table->timestamps();
         });
     }

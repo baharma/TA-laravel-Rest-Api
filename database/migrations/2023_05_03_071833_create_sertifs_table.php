@@ -14,7 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('sertifs', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
+            $table->text('sertif')->nullable();
+            $table->integer('skp')->nullable();
             $table->timestamps();
         });
     }

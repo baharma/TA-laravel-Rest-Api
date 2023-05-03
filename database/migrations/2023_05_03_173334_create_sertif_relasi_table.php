@@ -13,8 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('post_events', function (Blueprint $table) {
+        Schema::create('sertif_relasi', function (Blueprint $table) {
             $table->id();
+            $table->foreignUuid('pendaftaran_id')->references('id')->on('pendaftaran_events');
+            $table->foreignUuid('sertif_id')->references('id')->on('sertifs');
             $table->timestamps();
         });
     }
@@ -26,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('post_events');
+        Schema::dropIfExists('sertif_relasi');
     }
 };

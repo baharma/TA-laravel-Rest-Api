@@ -14,7 +14,12 @@ return new class extends Migration
     public function up()
     {
         Schema::create('thumnails', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
+            $table->string('title')->nullable();
+            $table->string('description')->nullable();
+            $table->foreignUuid('post_id')->references('id')->on('post_events');
+            $table->date('date')->nullable();
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }
