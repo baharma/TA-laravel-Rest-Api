@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\PostEvent;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class PostEventController extends Controller
 {
@@ -15,7 +16,12 @@ class PostEventController extends Controller
      */
     public function index()
     {
-        //
+        $data = [
+            "status" => Response::HTTP_OK,
+            "message" => "show properties"
+        ];
+
+
     }
 
     /**
