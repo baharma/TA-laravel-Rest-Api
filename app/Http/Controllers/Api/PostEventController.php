@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
-use App\Models\Thumnail;
+use App\Http\Controllers\Controller;
+use App\Models\PostEvent;
 use Illuminate\Http\Request;
 
-class ThumnailController extends Controller
+class PostEventController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +42,10 @@ class ThumnailController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Thumnail  $thumnail
+     * @param  \App\Models\PostEvent  $postEvent
      * @return \Illuminate\Http\Response
      */
-    public function show(Thumnail $thumnail)
+    public function show(PostEvent $postEvent)
     {
         //
     }
@@ -52,10 +53,10 @@ class ThumnailController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Thumnail  $thumnail
+     * @param  \App\Models\PostEvent  $postEvent
      * @return \Illuminate\Http\Response
      */
-    public function edit(Thumnail $thumnail)
+    public function edit(PostEvent $postEvent)
     {
         //
     }
@@ -64,10 +65,10 @@ class ThumnailController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Thumnail  $thumnail
+     * @param  \App\Models\PostEvent  $postEvent
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Thumnail $thumnail)
+    public function update(Request $request, PostEvent $postEvent)
     {
         //
     }
@@ -75,10 +76,10 @@ class ThumnailController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Thumnail  $thumnail
+     * @param  \App\Models\PostEvent  $postEvent
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Thumnail $thumnail)
+    public function destroy(PostEvent $postEvent)
     {
         //
     }

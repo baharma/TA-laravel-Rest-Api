@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
-use App\Models\PendaftaranUkm;
+use App\Http\Controllers\Controller;
+use App\Models\Sertif;
 use Illuminate\Http\Request;
 
-class PendaftaranUkmController extends Controller
+class SertifController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +42,10 @@ class PendaftaranUkmController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\PendaftaranUkm  $pendaftaranUkm
+     * @param  \App\Models\Sertif  $sertif
      * @return \Illuminate\Http\Response
      */
-    public function show(PendaftaranUkm $pendaftaranUkm)
+    public function show(Sertif $sertif)
     {
         //
     }
@@ -52,10 +53,10 @@ class PendaftaranUkmController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\PendaftaranUkm  $pendaftaranUkm
+     * @param  \App\Models\Sertif  $sertif
      * @return \Illuminate\Http\Response
      */
-    public function edit(PendaftaranUkm $pendaftaranUkm)
+    public function edit(Sertif $sertif)
     {
         //
     }
@@ -64,10 +65,10 @@ class PendaftaranUkmController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\PendaftaranUkm  $pendaftaranUkm
+     * @param  \App\Models\Sertif  $sertif
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, PendaftaranUkm $pendaftaranUkm)
+    public function update(Request $request, Sertif $sertif)
     {
         //
     }
@@ -75,10 +76,10 @@ class PendaftaranUkmController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\PendaftaranUkm  $pendaftaranUkm
+     * @param  \App\Models\Sertif  $sertif
      * @return \Illuminate\Http\Response
      */
-    public function destroy(PendaftaranUkm $pendaftaranUkm)
+    public function destroy(Sertif $sertif)
     {
         //
     }

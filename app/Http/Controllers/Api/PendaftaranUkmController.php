@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
-use App\Models\Sertif;
+use App\Http\Controllers\Controller;
+use App\Models\PendaftaranUkm;
 use Illuminate\Http\Request;
 
-class SertifController extends Controller
+class PendaftaranUkmController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +42,10 @@ class SertifController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Sertif  $sertif
+     * @param  \App\Models\PendaftaranUkm  $pendaftaranUkm
      * @return \Illuminate\Http\Response
      */
-    public function show(Sertif $sertif)
+    public function show(PendaftaranUkm $pendaftaranUkm)
     {
         //
     }
@@ -52,10 +53,10 @@ class SertifController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Sertif  $sertif
+     * @param  \App\Models\PendaftaranUkm  $pendaftaranUkm
      * @return \Illuminate\Http\Response
      */
-    public function edit(Sertif $sertif)
+    public function edit(PendaftaranUkm $pendaftaranUkm)
     {
         //
     }
@@ -64,10 +65,10 @@ class SertifController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Sertif  $sertif
+     * @param  \App\Models\PendaftaranUkm  $pendaftaranUkm
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Sertif $sertif)
+    public function update(Request $request, PendaftaranUkm $pendaftaranUkm)
     {
         //
     }
@@ -75,10 +76,10 @@ class SertifController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Sertif  $sertif
+     * @param  \App\Models\PendaftaranUkm  $pendaftaranUkm
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Sertif $sertif)
+    public function destroy(PendaftaranUkm $pendaftaranUkm)
     {
         //
     }

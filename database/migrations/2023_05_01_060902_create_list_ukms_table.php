@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('anggota')->nullable();
             $table->foreignId('ketua_id')->references('id')->on('users');
             $table->text('image_logo')->nullable();
+            $table->longText('about')->nullable();
             $table->timestamps();
         });
     }

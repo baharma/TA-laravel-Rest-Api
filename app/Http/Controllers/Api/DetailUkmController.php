@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
-use App\Models\PostEvent;
+use App\Http\Controllers\Controller;
+use App\Models\DetailUkm;
 use Illuminate\Http\Request;
 
-class PostEventController extends Controller
+class DetailUkmController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +42,10 @@ class PostEventController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\PostEvent  $postEvent
+     * @param  \App\Models\DetailUkm  $detailUkm
      * @return \Illuminate\Http\Response
      */
-    public function show(PostEvent $postEvent)
+    public function show(DetailUkm $detailUkm)
     {
         //
     }
@@ -52,10 +53,10 @@ class PostEventController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\PostEvent  $postEvent
+     * @param  \App\Models\DetailUkm  $detailUkm
      * @return \Illuminate\Http\Response
      */
-    public function edit(PostEvent $postEvent)
+    public function edit(DetailUkm $detailUkm)
     {
         //
     }
@@ -64,10 +65,10 @@ class PostEventController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\PostEvent  $postEvent
+     * @param  \App\Models\DetailUkm  $detailUkm
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, PostEvent $postEvent)
+    public function update(Request $request, DetailUkm $detailUkm)
     {
         //
     }
@@ -75,10 +76,10 @@ class PostEventController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\PostEvent  $postEvent
+     * @param  \App\Models\DetailUkm  $detailUkm
      * @return \Illuminate\Http\Response
      */
-    public function destroy(PostEvent $postEvent)
+    public function destroy(DetailUkm $detailUkm)
     {
         //
     }

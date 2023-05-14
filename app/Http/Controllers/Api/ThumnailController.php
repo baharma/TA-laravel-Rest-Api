@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
-use App\Models\PendaftaranEvent;
+use App\Http\Controllers\Controller;
+use App\Models\Thumnail;
 use Illuminate\Http\Request;
 
-class PendaftaranEventController extends Controller
+class ThumnailController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +42,10 @@ class PendaftaranEventController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\PendaftaranEvent  $pendaftaranEvent
+     * @param  \App\Models\Thumnail  $thumnail
      * @return \Illuminate\Http\Response
      */
-    public function show(PendaftaranEvent $pendaftaranEvent)
+    public function show(Thumnail $thumnail)
     {
         //
     }
@@ -52,10 +53,10 @@ class PendaftaranEventController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\PendaftaranEvent  $pendaftaranEvent
+     * @param  \App\Models\Thumnail  $thumnail
      * @return \Illuminate\Http\Response
      */
-    public function edit(PendaftaranEvent $pendaftaranEvent)
+    public function edit(Thumnail $thumnail)
     {
         //
     }
@@ -64,10 +65,10 @@ class PendaftaranEventController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\PendaftaranEvent  $pendaftaranEvent
+     * @param  \App\Models\Thumnail  $thumnail
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, PendaftaranEvent $pendaftaranEvent)
+    public function update(Request $request, Thumnail $thumnail)
     {
         //
     }
@@ -75,10 +76,10 @@ class PendaftaranEventController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\PendaftaranEvent  $pendaftaranEvent
+     * @param  \App\Models\Thumnail  $thumnail
      * @return \Illuminate\Http\Response
      */
-    public function destroy(PendaftaranEvent $pendaftaranEvent)
+    public function destroy(Thumnail $thumnail)
     {
         //
     }
