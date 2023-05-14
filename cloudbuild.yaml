@@ -33,3 +33,6 @@ steps:
     - deploy
     - --no-promote
 timeout: '600s'
+options:
+  logging: CLOUD_LOGGING_ONLY
+
