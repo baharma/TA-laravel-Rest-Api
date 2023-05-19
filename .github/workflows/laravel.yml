@@ -1,67 +1,120 @@
-name: Laravel
-
-on:
-  push:
-    branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
-
-jobs:
-  laravel-tests:
-
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: shivammathur/setup-php@15c43e89cdef867065b0213be354c2841860869e
-      with:
-        php-version: '8.0'
-    - uses: actions/checkout@v3
-    - name: Copy .env
-      run: php -r "file_exists('.env') || copy('.env.example', '.env');"
-    - name: Install Dependencies
-      run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
-    - name: Generate key
-      run: php artisan key:generate
-    - name: Directory Permissions
-      run: chmod -R 777 storage bootstrap/cache
-    - name: Create Database
-      run: |
-        mkdir -p database
-        touch database/database.sqlite
-    - name: Execute tests (Unit and Feature tests) via PHPUnit
-      env:
-        DB_CONNECTION: sqlite
-        DB_DATABASE: database/database.sqlite
-      run: vendor/bin/phpunit
-    - name: "gcr.io/cloud-builders/gcloud"
-    args:
-      [
-        "run",
-        "deploy",
-        "cms-staging",
-        "--image",
-        "asia-southeast2-docker.pkg.dev/alterstay-production/private/cms:$TAG_NAME",
-        "--region",
-        "asia-southeast2",
-        "--platform",
-        "managed",
-        "--allow-unauthenticated",
-        "--add-cloudsql-instances",
-        "alterstay-production:asia-southeast2:pgsql-alterbook",
-        "--set-env-vars=APP_NAME=Instiki Api",
-        "--set-env-vars=APP_ENV=staging",
-        "--set-env-vars=APP_DEBUG=true",
-        "--set-env-vars=LOG_CHANNEL=stack",
-        "--set-env-vars=LOG_DEPRECATIONS_CHANNEL=null",
-        "--set-env-vars=LOG_LEVEL=debug",
-        "--set-env-vars=DB_CONNECTION=pgsql",
-        "--set-env-vars=DB_DATABASE=postgres",
-        "--set-env-vars=DB_SCHEMA=postgres",
-        "--set-env-vars=DB_HOST=/cloudsql/poetic-chariot-353217:us-central1:postgreinstiki",
-        "--set-secrets=APP_KEY=cms-staging-key:latest",
-        "--set-secrets=DB_USERNAME=postgres",
-        "--set-secrets=DB_PASSWORD=NHr6tNBC$%g[g0dX",
-        "--port=80",
-      ]
-options:
-  logging: CLOUD_LOGGING_ONLY
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: ta-laravel-rest-api
+  namespace: '994483634860'
+  selfLink: /apis/serving.knative.dev/v1/namespaces/994483634860/services/ta-laravel-rest-api
+  uid: 5bf673d3-e957-46f6-984d-1e30180754ff
+  resourceVersion: AAX8B37FWyM
+  generation: 4
+  creationTimestamp: '2023-05-14T20:15:49.438103Z'
+  labels:
+    managed-by: gcp-cloud-build-deploy-cloud-run
+    gcb-trigger-id: fc7f95c3-1815-4bf6-80a7-0b89832d98ba
+    cloud.googleapis.com/location: us-central1
+  annotations:
+    run.googleapis.com/client-name: cloud-console
+    serving.knative.dev/creator: bagusaditya1899@gmail.com
+    serving.knative.dev/lastModifier: bagusaditya1899@gmail.com
+    run.googleapis.com/operation-id: f728ec89-2e21-4128-be4f-9e7fde9c05fd
+    run.googleapis.com/ingress: all
+    run.googleapis.com/ingress-status: all
+spec:
+  template:
+    metadata:
+      annotations:
+        run.googleapis.com/client-name: cloud-console
+        run.googleapis.com/cloudsql-instances: poetic-chariot-353217:us-central1:postgreinstiki
+        autoscaling.knative.dev/maxScale: '100'
+    spec:
+      containerConcurrency: 80
+      timeoutSeconds: 300
+      serviceAccountName: 994483634860-compute@developer.gserviceaccount.com
+      containers:
+      - image: gcr.io/cloudrun/placeholder
+        ports:
+        - name: http1
+          containerPort: 8080
+        env:
+        - name: DB_CONNECTION
+          value: pgsql
+        - name: DB_HOST
+          value: 34.31.13.45
+        - name: DB_DATABASE
+          value: postgres
+        - name: DB_USERNAME
+          value: postgres
+        - name: DB_PASSWORD
+          value: NHr6tNBC$%g[g0dX
+        - name: APP_NAME
+          value: Laravel
+        - name: APP_ENV
+          value: staging
+        - name: APP_KEY
+          value: base64:ON11MaHur6fQ234Phco3aY6aV49QBa28ag+4+D2XokM=
+        - name: APP_DEBUG
+          value: 'true'
+        - name: APP_URL
+          value: http://localhost
+        - name: LOG_CHANNEL
+          value: stack
+        - name: LOG_DEPRECATIONS_CHANNEL
+          value: 'null'
+        - name: LOG_LEVEL
+          value: debug
+        - name: BROADCAST_DRIVER
+          value: log
+        - name: CACHE_DRIVER
+          value: file
+        - name: FILESYSTEM_DISK
+          value: local
+        - name: QUEUE_CONNECTION
+          value: sync
+        - name: SESSION_DRIVER
+          value: file
+        - name: SESSION_LIFETIME
+          value: '120'
+        - name: MEMCACHED_HOST
+          value: 127.0.0.1
+        - name: REDIS_HOST
+          value: 127.0.0.1
+        - name: REDIS_PASSWORD
+          value: 'null'
+        - name: REDIS_PORT
+          value: '6379'
+        - name: JWT_SECRET
+          value: sr8W6iQa9B9hczXas0zeTU3ZFuhhiuXF3ukFVSi06wrmMF97Usyd2cyxyOB7D0Cc
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 512Mi
+        startupProbe:
+          timeoutSeconds: 240
+          periodSeconds: 240
+          failureThreshold: 1
+          tcpSocket:
+            port: 8080
+  traffic:
+  - percent: 100
+    latestRevision: true
+status:
+  observedGeneration: 4
+  conditions:
+  - type: Ready
+    status: 'True'
+    lastTransitionTime: '2023-05-19T08:06:25.745895Z'
+  - type: ConfigurationsReady
+    status: 'True'
+    lastTransitionTime: '2023-05-19T08:06:23.350738Z'
+  - type: RoutesReady
+    status: 'True'
+    lastTransitionTime: '2023-05-19T08:06:25.828075Z'
+  latestReadyRevisionName: ta-laravel-rest-api-00002-s9v
+  latestCreatedRevisionName: ta-laravel-rest-api-00002-s9v
+  traffic:
+  - revisionName: ta-laravel-rest-api-00002-s9v
+    percent: 100
+    latestRevision: true
+  url: https://ta-laravel-rest-api-xjgft6ih7a-uc.a.run.app
+  address:
+    url: https://ta-laravel-rest-api-xjgft6ih7a-uc.a.run.app
