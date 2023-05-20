@@ -40,20 +40,21 @@ RUN apt-get update \
 # Copy files
 COPY . /var/www
 
-COPY ./deploy/local.ini /usr/local/etc/php/local.ini
+COPY .github/workflows/local.ini /usr/local/etc/php/local.ini
 
-COPY ./deploy/nginx.conf /etc/nginx/nginx.conf
+COPY .github/workflows/nginx.conf /etc/nginx/nginx.conf
 
 RUN chmod +rwx /var/www
-
 RUN chmod -R 777 /var/www
+
 
 # setup FE
 RUN npm install
 
 RUN npm rebuild node-sass
 
-RUN npm run build
+RUN npm run dev
+
 
 # setup composer and laravel
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
@@ -81,9 +82,10 @@ RUN php artisan view:cache
 
 EXPOSE 80
 
-RUN ["chmod", "+x", "./deploy/post_deploy.sh"]
+RUN chmod +x .github/workflows/post_deploy.sh
 
-CMD [ "executable" ] php artisan serve --host=0.0.0.0 --port 8080
+CMD [ "executable", "php", "artisan", "serve", "--host=0.0.0.0", "--port", "8080" ]
+
 
 # CMD [ "sh", "./deploy/post_deploy.sh" ]
 # CMD php artisan serve --host=127.0.0.1 --port=9000
