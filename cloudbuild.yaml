@@ -4,19 +4,19 @@ metadata:
   name: ta-laravel-rest-api
   namespace: '994483634860'
   selfLink: /apis/serving.knative.dev/v1/namespaces/994483634860/services/ta-laravel-rest-api
-  uid: 5bf673d3-e957-46f6-984d-1e30180754ff
-  resourceVersion: AAX8B37FWyM
-  generation: 4
-  creationTimestamp: '2023-05-14T20:15:49.438103Z'
+  uid: 9010755a-84f0-44dd-a66b-a3fc2e39a571
+  resourceVersion: AAX8J/9Tv90
+  generation: 25
+  creationTimestamp: '2023-05-19T16:08:00.371744Z'
   labels:
     managed-by: gcp-cloud-build-deploy-cloud-run
-    gcb-trigger-id: fc7f95c3-1815-4bf6-80a7-0b89832d98ba
+    gcb-trigger-id: c616f98d-23a5-4566-b70e-3e48aadf6eee
     cloud.googleapis.com/location: us-central1
   annotations:
     run.googleapis.com/client-name: cloud-console
     serving.knative.dev/creator: bagusaditya1899@gmail.com
     serving.knative.dev/lastModifier: bagusaditya1899@gmail.com
-    run.googleapis.com/operation-id: f728ec89-2e21-4128-be4f-9e7fde9c05fd
+    run.googleapis.com/operation-id: 8d94ca7e-38cf-4e41-8331-d591afde511c
     run.googleapis.com/ingress: all
     run.googleapis.com/ingress-status: all
 spec:
@@ -31,57 +31,39 @@ spec:
       timeoutSeconds: 300
       serviceAccountName: 994483634860-compute@developer.gserviceaccount.com
       containers:
-      - image: gcr.io/poetic-chariot-353217/github.com/baharma/ta-laravel-rest-api@sha256:e114913a8c865266c1309e431822db026caaba2b3b0cb6d0d5e297c7ec1a00c3
+      - image: gcr.io/poetic-chariot-353217/github.com/baharma/ta-laravel-rest-api@sha256:8a970a200cb606cb91faa9eff9d10e75cbab277c75172926e7d0d49d922ccdae
         ports:
         - name: http1
           containerPort: 8080
         env:
+        - name: APP_NAME
+          value: TA Instiki
+        - name: APP_URL
+          value: https://cms.Instiki.co/
+        - name: APP_ENV
+          value: Staging
+        - name: APP_DEBUG
+          value: 'true'
+        - name: LOG_CHANNEL
+          value: 'null'
+        - name: LOG_DEPRECATIONS_CHANNEL
+          value: 'null'
+        - name: LOG_LEVEL
+          value: debug
         - name: DB_CONNECTION
           value: pgsql
         - name: DB_HOST
           value: 34.31.13.45
+        - name: DB_PORT
+          value: '5432'
         - name: DB_DATABASE
           value: postgres
         - name: DB_USERNAME
           value: postgres
         - name: DB_PASSWORD
           value: NHr6tNBC$%g[g0dX
-        - name: APP_NAME
-          value: Laravel
-        - name: APP_ENV
-          value: staging
-        - name: APP_KEY
-          value: base64:ON11MaHur6fQ234Phco3aY6aV49QBa28ag+4+D2XokM=
-        - name: APP_DEBUG
-          value: 'true'
-        - name: APP_URL
-          value: http://localhost
-        - name: LOG_CHANNEL
-          value: stack
-        - name: LOG_DEPRECATIONS_CHANNEL
-          value: 'null'
-        - name: LOG_LEVEL
-          value: debug
-        - name: BROADCAST_DRIVER
-          value: log
-        - name: CACHE_DRIVER
-          value: file
-        - name: FILESYSTEM_DISK
-          value: local
-        - name: QUEUE_CONNECTION
-          value: sync
-        - name: SESSION_DRIVER
-          value: file
-        - name: SESSION_LIFETIME
-          value: '120'
-        - name: MEMCACHED_HOST
-          value: 127.0.0.1
-        - name: REDIS_HOST
-          value: 127.0.0.1
-        - name: REDIS_PASSWORD
-          value: 'null'
-        - name: REDIS_PORT
-          value: '6379'
+        - name: DB_SCHEMA
+          value: postgres
         - name: JWT_SECRET
           value: sr8W6iQa9B9hczXas0zeTU3ZFuhhiuXF3ukFVSi06wrmMF97Usyd2cyxyOB7D0Cc
         resources:
@@ -95,26 +77,25 @@ spec:
           tcpSocket:
             port: 8080
   traffic:
-  - percent: 100
-    latestRevision: true
+  - revisionName: ta-laravel-rest-api-00016-8wm
+    percent: 100
 status:
-  observedGeneration: 4
+  observedGeneration: 25
   conditions:
   - type: Ready
     status: 'True'
-    lastTransitionTime: '2023-05-19T08:06:25.745895Z'
+    lastTransitionTime: '2023-05-20T23:00:01.156061Z'
   - type: ConfigurationsReady
     status: 'True'
-    lastTransitionTime: '2023-05-19T08:06:23.350738Z'
+    lastTransitionTime: '2023-05-20T23:00:01.156061Z'
   - type: RoutesReady
     status: 'True'
-    lastTransitionTime: '2023-05-19T08:06:25.828075Z'
-  latestReadyRevisionName: ta-laravel-rest-api-00002-s9v
-  latestCreatedRevisionName: ta-laravel-rest-api-00002-s9v
+    lastTransitionTime: '2023-05-20T09:11:30.934587Z'
+  latestReadyRevisionName: ta-laravel-rest-api-00024-r45
+  latestCreatedRevisionName: ta-laravel-rest-api-00024-r45
   traffic:
-  - revisionName: ta-laravel-rest-api-00002-s9v
+  - revisionName: ta-laravel-rest-api-00016-8wm
     percent: 100
-    latestRevision: true
   url: https://ta-laravel-rest-api-xjgft6ih7a-uc.a.run.app
   address:
     url: https://ta-laravel-rest-api-xjgft6ih7a-uc.a.run.app
