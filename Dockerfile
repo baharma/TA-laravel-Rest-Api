@@ -65,6 +65,7 @@ RUN composer dump-autoload --working-dir="/var/www"
 
 RUN php artisan optimize
 
+
 RUN php artisan route:clear
 
 RUN php artisan route:cache
@@ -76,6 +77,8 @@ RUN php artisan config:cache
 RUN php artisan view:clear
 
 RUN php artisan view:cache
+
+RUN php artisan key:generate
 
 # remove this line if you do not want to run migrations on each build
 # RUN php artisan migrate --force
