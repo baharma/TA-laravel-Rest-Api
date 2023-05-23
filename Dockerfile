@@ -78,7 +78,6 @@ RUN php artisan view:clear
 
 RUN php artisan view:cache
 
-RUN php artisan key:generate
 
 # remove this line if you do not want to run migrations on each build
 # RUN php artisan migrate --force
