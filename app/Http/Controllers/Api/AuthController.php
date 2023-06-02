@@ -32,25 +32,22 @@ class AuthController extends Controller
             'email' => 'required|string|email',
             'password' => 'required|string',
         ]);
-        $credentials = $request->only('email', 'password');
 
-        $token = Auth::guard('api')->attempt($credentials);
-        if (!$token) {
+        if (! Auth::attempt($request->only('email', 'password'))) {
             return response()->json([
-                'status' => 'error',
-                'message' => 'Unauthorized',
+                'message' => 'Unauthorized'
             ], 401);
         }
 
-        $user = Auth::guard('api')->user();
+        $user = User::where('email', $request->email)->firstOrFail();
+
+        $token = $user->createToken('auth_token')->plainTextToken;
+
         return response()->json([
-                'status' => 'success',
-                'user' => $user->name,
-                'authorisation' => [
-                    'token' => $token,
-                    'type' => 'bearer',
-                ]
-            ]);
+            'message' => 'Login success',
+            'access_token' => $token,
+            'token_type' => 'Bearer'
+        ]);
     }
 
 
