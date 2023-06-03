@@ -36,4 +36,4 @@ Auth::routes();
 
 
 
-Route::post('login/new',[LoginController::class,'login'])->name('login.new');
+
