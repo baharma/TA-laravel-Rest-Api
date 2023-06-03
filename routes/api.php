@@ -27,8 +27,6 @@ Route::post('/register', [AuthController::class, 'register']);
 
 Route::post('/logout', [AuthController::class, 'logout'])->middleware(['auth:sanctum']);
 
-
-
 Route::group(['middleware' => ['auth:sanctum']], function() {
 
 Route::post('/refresh', [AuthController::class, 'refresh']);
