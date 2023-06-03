@@ -28,11 +28,6 @@ class AuthController extends Controller
      * @return \Illuminate\Http\JsonResponse
      */
     public function login(Request $request){
-        $request->validate([
-            'email' => 'required|string|email',
-            'password' => 'required|string',
-        ]);
-
         if (! Auth::attempt($request->only('email', 'password'))) {
             return response()->json([
                 'message' => 'Unauthorized'
@@ -67,13 +62,14 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function logout()
+    public function logout(Request $request)
     {
-        Auth::logout();
+        $request->user()->tokens()->delete();
+
         return response()->json([
-            'status' => 'success',
-            'message' => 'Successfully logged out',
-        ]);
+            'status' => true,
+            'message' => 'User logged out successfully.'
+        ], 200);
     }
 
     /**
