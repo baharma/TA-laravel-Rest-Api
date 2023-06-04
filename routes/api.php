@@ -21,20 +21,20 @@ use Illuminate\Support\Facades\Route;
 // });
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/register', [AuthController::class, 'register']);
-Route::group([
-    'middleware' => 'api',
-    'prefix' => 'auth'
-], function ($router) {
 
-});
-Route::group(['middleware' => ['jwt.verify']], function() {
-Route::post('/logout', [AuthController::class, 'logout']);
+
+
+
+Route::post('/logout', [AuthController::class, 'logout'])->middleware(['auth:sanctum']);
+
+Route::group(['middleware' => ['auth:sanctum']], function() {
+
 Route::post('/refresh', [AuthController::class, 'refresh']);
 Route::get('/user-profile', [AuthController::class, 'userProfile']);
 });
 
 
-Route::group(['middleware'=>['jwt.verify']],function(){
+Route::group(['middleware'=>['auth:sanctum']],function(){
     Route::get('/list-post',[PostEventController::class,'index']);
 
 });

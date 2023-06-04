@@ -28,11 +28,6 @@ class AuthController extends Controller
      * @return \Illuminate\Http\JsonResponse
      */
     public function login(Request $request){
-        $request->validate([
-            'email' => 'required|string|email',
-            'password' => 'required|string',
-        ]);
-
         if (! Auth::attempt($request->only('email', 'password'))) {
             return response()->json([
                 'message' => 'Unauthorized'
@@ -67,13 +62,14 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function logout()
+    public function logout(Request $request)
     {
-        Auth::logout();
+        $request->user()->tokens()->delete();
+
         return response()->json([
-            'status' => 'success',
-            'message' => 'Successfully logged out',
-        ]);
+            'status' => true,
+            'message' => 'User logged out successfully.'
+        ], 200);
     }
 
     /**
@@ -81,16 +77,14 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function refresh()
+    public function refresh(Request $request)
     {
-        return response()->json([
-            'status' => 'success',
-            'user' => Auth::guard('api')->user(),
-            'authorisation' => [
-                'token' => Auth::refresh(),
-                'type' => 'bearer',
-            ]
-        ]);
+        $request->user()->tokens()->delete();
+
+    return response()->json([
+        'status'=>'sukses',
+        'access_token' => $request->user()->createToken('api')->plainTextToken,
+    ]);
     }
 
 
@@ -104,40 +98,32 @@ class AuthController extends Controller
 
 
      public function register(Request $request){
-        $request->validate([
+        $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6',
+            'email' => 'required|string|max:255|unique:users',
+            'password' => 'required|string|min:8',
+            'semester' => 'required' // corrected typo from 'require' to 'required'
         ]);
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors());
+        }
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'semester' => $request->semester
         ]);
 
-        $token = Auth::login($user);
+        $token = $user->createToken('auth_token')->plainTextToken;
+
         return response()->json([
-            'status' => 'success',
-            'message' => 'User created successfully',
-            'user' => $user,
-            'authorisation' => [
-                'token' => $token,
-                'type' => 'bearer',
-            ]
+            'data' => $user,
+            'access_token' => $token,
+            'token_type' => 'Bearer'
         ]);
+
     }
-
-
-
-    // protected function createNewToken($token){
-    //     return response()->json([
-    //         'access_token' => $token,
-    //         'token_type' => 'bearer',
-    //         'expires_in' => auth('api')->factory()->getTTL() * 60,
-    //         'user' => auth()->user(),
-    //         'token' => $token, // this should now return the token value
-    //     ]);
-    // }
 
 }
