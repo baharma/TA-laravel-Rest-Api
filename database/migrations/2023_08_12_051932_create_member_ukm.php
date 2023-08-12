@@ -13,13 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('thumnails', function (Blueprint $table) {
-            $table->uuid('id')->primary();
-            $table->string('title')->nullable();
-            $table->string('description')->nullable();
-            $table->foreignUuid('post_id')->references('id')->on('post_events');
-            $table->date('date')->nullable();
-            $table->string('image')->nullable();
+        Schema::create('member_ukm', function (Blueprint $table) {
+            $table->id();
+            $table->foreignUuid('ukm_id')->references('id')->on('ukm');
+            $table->string('role')->nullable();
+            $table->foreignId('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }
@@ -31,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('thumnails');
+        Schema::dropIfExists('member_ukm');
     }
 };

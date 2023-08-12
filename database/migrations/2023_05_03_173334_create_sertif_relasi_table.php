@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('sertif_relasi', function (Blueprint $table) {
             $table->id();
-            $table->foreignUuid('pendaftaran_id')->references('id')->on('pendaftaran_events');
+            $table->foreignUuid('member_event_id')->references('id')->on('member_event');
             $table->foreignUuid('sertif_id')->references('id')->on('sertifs');
             $table->timestamps();
         });

@@ -13,15 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('post_events', function (Blueprint $table) {
+        Schema::create('event', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('title_name')->nullable();
             $table->string('slug')->unique();
             $table->string('description')->nullable();
             $table->text('image')->nullable();
             $table->string('address_event')->nullable();
-            $table->foreignUuid('ukm_id')->references('id')->on('list_ukms');
-            $table->foreignId('user_post')->references('id')->on('users');
+            $table->foreignUuid('ukm_id')->references('id')->on('ukm');
+            $table->foreignId('create_by')->references('id')->on('users');
+            $table->foreignId('update_by')->references('id')->on('users')->nullable();
             $table->timestamp('start_register')->nullable();
             $table->timestamp('end_register')->nullable();
             $table->string('tlp')->nullable();
@@ -36,6 +37,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('post_events');
+        Schema::dropIfExists('event');
     }
 };
