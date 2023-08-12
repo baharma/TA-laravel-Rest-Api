@@ -13,14 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('pendaftaran_ukms', function (Blueprint $table) {
+        Schema::create('member_event', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->string('name')->nullable();
-            $table->foreignUuid('ukm_id')->references('id')->on('list_ukms')->nullable();
-            $table->string('nim')->nullable();
-            $table->string('semester')->nullable();
+            $table->boolean('absen')->default(0);
+            $table->foreignUuid('event_id')->references('id')->on('event')->nullable();
             $table->string('tlp')->nullable();
-            $table->string('alamat')->nullable();
+            $table->string('role')->nullable();
             $table->foreignId('user_id')->references('id')->on('users')->nullable();
             $table->timestamps();
         });
@@ -33,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pendaftaran_ukms');
+        Schema::dropIfExists('member_event');
     }
 };

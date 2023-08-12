@@ -13,12 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('list_ukms', function (Blueprint $table) {
+        Schema::create('ukm', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('nama_ukm')->nullable();
-            $table->string('anggota')->nullable();
-            $table->foreignId('ketua_id')->references('id')->on('users');
-            $table->text('image_logo')->nullable();
+            $table->string('image_logo')->nullable();
+            $table->text('tlp')->nullable();
             $table->longText('about')->nullable();
             $table->timestamps();
         });
@@ -31,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('list_ukms');
+        Schema::dropIfExists('ukm');
     }
 };
