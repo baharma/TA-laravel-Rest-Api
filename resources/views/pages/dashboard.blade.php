@@ -5,7 +5,7 @@
 
 <div class="container">
     <div id="app">
-        <   ></hello-vue>
+        <hello-vue></hello-vue>
     </div>
 </div>
 @endsection
