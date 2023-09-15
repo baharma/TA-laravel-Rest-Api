@@ -4,7 +4,7 @@
 <script>
 export default {
     setup: () => ({
-        title: 'Cacat Kali'
+        title: 'Aku Keren'
     })
 }
 </script>

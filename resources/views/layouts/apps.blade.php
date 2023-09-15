@@ -10,6 +10,7 @@
     <meta name="author" content="">
 
     <title>SB Admin 2 - Dashboard</title>
+    @vite('resources/js/app.js')
     <script src="{{ mix('js/app.js') }}" defer></script>
     @include('part-layout.style')
 

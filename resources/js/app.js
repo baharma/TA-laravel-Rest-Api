@@ -1,8 +1,9 @@
 import './bootstrap';
 
 import Alpine from 'alpinejs';
-import { createApp } from 'vue'
-import HelloVue from './components/HelloVue'
+import { createApp } from 'vue/dist/vue.esm-bundler.js'
+
+import HelloVue from './components/HelloVue.vue'
 
 const app = createApp({})
 
