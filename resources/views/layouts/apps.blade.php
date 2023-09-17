@@ -2,16 +2,15 @@
 <html lang="en">
 
 <head>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>SB Admin 2 - Dashboard</title>
-    @vite('resources/js/app.js')
-    <script src="{{ mix('js/app.js') }}" defer></script>
+    @vite('resources/sass/app.scss')
+    {{-- @vite('resources/css/app.css') --}}
     @include('part-layout.style')
 
 </head>
@@ -36,7 +35,7 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+                        <h1 class="h3 mb-0 text-gray-800"></h1>
                     </div>
 
                     @yield('content')
@@ -92,6 +91,7 @@
     @include('part-layout.script')
     <script src="{{asset('js/vue/dashboard/dashboard.js')}}"></script>
     {{-- <script src="{{ mix('js/app.js') }}"></script> --}}
+    @vite('resources/js/app.js')
 </body>
 
 </html>

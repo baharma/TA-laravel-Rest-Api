@@ -3,25 +3,31 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\EventResource;
 use App\Models\PostEvent;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 class PostEventController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+    private $event;
+    public function __construct(PostEvent $event)
+    {
+        $this->event = $event;
+    }
+
     public function index()
     {
-        $data = [
-            "status" => Response::HTTP_OK,
-            "message" => "show properties"
+        $data = $this->event->all();
+
+        $response = [
+            "status" => 200,
+            "message" => "success"
         ];
-
-
+        $data_with_paginate = $data->json()->paginate();
+        $eventData = EventResource::collection($data_with_paginate)->additional($response);
+        return $eventData->response()->setStatusCode(200);
     }
 
     /**
