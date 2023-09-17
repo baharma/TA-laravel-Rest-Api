@@ -10,6 +10,8 @@ class PostEvent extends Model
 {
     use HasFactory,HasUuids;
 
+    private $table = 'event';
+
     protected $fillable = [
         'title_name',
         'slug',
@@ -23,4 +25,6 @@ class PostEvent extends Model
         'tlp'
     ];
 
+
+    
 }

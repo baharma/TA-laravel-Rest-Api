@@ -1,11 +1,14 @@
 @extends('layouts.apps')
 
 @section('content')
-<!-- Content Row -->
 
-<div class="container">
-    <div id="app">
-        <hello-vue></hello-vue>
+<div id="apps-vue" class="row">
+    <div class="col-lg-9">
+        <post-event></post-event>
+    </div>
+    <div class="col">
+
     </div>
 </div>
+
 @endsection

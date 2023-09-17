@@ -36,5 +36,15 @@ Route::get('/user-profile', [AuthController::class, 'userProfile']);
 
 Route::group(['middleware'=>['auth:sanctum']],function(){
     Route::get('/list-post',[PostEventController::class,'index']);
-
 });
+
+
+
+
+
+
+
+
+
+
+
