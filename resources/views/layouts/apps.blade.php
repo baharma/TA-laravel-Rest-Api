@@ -10,7 +10,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>SB Admin 2 - Dashboard</title>
     @vite('resources/sass/app.scss')
-    {{-- @vite('resources/css/app.css') --}}
+
     @include('part-layout.style')
 
 </head>
@@ -92,6 +92,7 @@
     <script src="{{asset('js/vue/dashboard/dashboard.js')}}"></script>
     {{-- <script src="{{ mix('js/app.js') }}"></script> --}}
     @vite('resources/js/app.js')
+    @stack('script')
 </body>
 
 </html>
