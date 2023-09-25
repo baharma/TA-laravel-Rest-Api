@@ -2,13 +2,16 @@
 
 @section('content')
 
-<div id="apps-vue" class="row">
-    <div class="col-lg-9">
-        <post-event></post-event>
-    </div>
-    <div class="col">
+    <div class="card" id="card">
+        <div class="row">
+            <div class="col-lg-5" id="event-card" >
 
+            </div>
+        </div>
     </div>
-</div>
 
 @endsection
+
+@push('script')
+    <script src="{{asset('js/main/get-all-event.js')}}"></script>
+@endpush
