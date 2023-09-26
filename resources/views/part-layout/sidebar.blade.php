@@ -39,7 +39,7 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Create Event In Campus:</h6>
-                        <a class="collapse-item" href="buttons.html">Create Event</a>
+                        <a class="collapse-item" href="{{route('event-index')}}">Create Event</a>
                         <a class="collapse-item" href="cards.html">Event Schedule</a>
                     </div>
                 </div>
