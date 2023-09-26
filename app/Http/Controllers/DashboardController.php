@@ -22,4 +22,5 @@ class DashboardController extends Controller
         $data = $this->event->get();
         return response()->json($data);
     }
+
 }
