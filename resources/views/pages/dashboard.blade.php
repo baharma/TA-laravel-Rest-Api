@@ -1,6 +1,7 @@
 @extends('layouts.apps')
 
 @section('content')
+    <h1>List Event Kampus</h1>
 
 <div class="row">
     <div class="col-lg-9 p-2" id="event-card">
