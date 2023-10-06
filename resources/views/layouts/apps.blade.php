@@ -10,6 +10,9 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>SB Admin 2 - Dashboard</title>
     @vite('resources/sass/app.scss')
+    <link rel="stylesheet" href="{{asset('scss/main/main.css')}}">
+    <link rel="stylesheet" href="{{asset('library-plugin/dropify/dist/css/dropify.css')}}">
+    <link rel="stylesheet" href="{{asset('library-plugin/dropify/dist/css/dropify.min.css')}}">
     @stack('style')
     @include('part-layout.style')
 
@@ -92,6 +95,10 @@
     <script src="{{asset('js/vue/dashboard/dashboard.js')}}"></script>
     {{-- <script src="{{ mix('js/app.js') }}"></script> --}}
     @vite('resources/js/app.js')
+    <script src="{{asset('library-plugin/dropify/dist/js/dropify.js')}}"></script>
+    <script src="{{asset('library-plugin/dropify/dist/js/dropify.min.js')}}"></script>
+
+
     @stack('script')
 </body>
 

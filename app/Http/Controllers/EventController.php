@@ -19,5 +19,8 @@ class EventController extends Controller
         return view('pages.event.index',compact('event'));
     }
 
+    public function create(Request $request){
+
+    }
 
 }

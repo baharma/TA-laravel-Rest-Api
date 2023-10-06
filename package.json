@@ -24,6 +24,7 @@
         "vue-loader": "^17.2.2"
     },
     "dependencies": {
+        "dropify": "^0.2.2",
         "postcss-import": "^15.1.0",
         "vue-router": "^4.2.4"
     }
