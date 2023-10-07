@@ -1,6 +1,6 @@
-
+@props(['idname'=>null,'label'=>null,'rows'=>null,'value'=>null,'name'=>null])
 
 <div class="form-group">
-    <label for="exampleFormControlTextarea1">Example textarea</label>
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+    <label for="{{$idname}}">{{$label}}</label>
+    <textarea class="form-control" id="{{$idname}}" name="{{$name}}" rows="{{$rows}}">{{$value}}</textarea>
 </div>
