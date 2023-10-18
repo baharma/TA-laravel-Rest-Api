@@ -36,6 +36,7 @@ Route::middleware('auth')->group(function () {
     Route::controller(EventController::class)->group(function(){
         Route::get('/event','index')->name('event-index');
         Route::post('/event/create','create')->name('event.create');
+
     });
 });
 

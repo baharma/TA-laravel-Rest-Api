@@ -15,7 +15,8 @@ class DashboardController extends Controller
     }
 
     public function index(){
-        return view('pages.dashboard');
+        $event =  $this->event->paginate('10');
+        return view('pages.dashboard',compact('event'));
     }
 
     public function getAll(){

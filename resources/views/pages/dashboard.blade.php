@@ -1,39 +1,34 @@
 @extends('layouts.apps')
 
 @section('content')
-    <h1>List Event Kampus</h1>
+<h1>List Event Kampus</h1>
 
-<div class="row">
-    <div class="col-lg-9 p-2" id="event-card">
-        <section>
-            <div class="container py-2">
-                <article class="postcard light yellow" style="height: 200px">
-                    <a class="postcard__img_link" href="#">
-                        <img class="postcard__img" src="https://picsum.photos/501/501" alt="Image Title" />
-                    </a>
-                    <div class="postcard__text t-dark">
-                        <h1 class="postcard__title yellow"><a href="#">Podcast Title</a></h1>
-                        <div class="postcard__subtitle small">
-                            <time datetime="2020-05-25 12:00:00">
-                                <i class="fas fa-calendar-alt mr-2"></i>
-                                Mon, May 25th 2020
-                            </time>
-                        </div>
-                        <ul class="postcard__tagbox">
-                            <li class="tag__item"><i class="fas fa-tag mr-2"></i>Podcast</li>
-                            <li class="tag__item"><i class="fas fa-clock mr-2"></i>55 mins.</li>
-                            <li class="tag__item play yellow">
-                                <a href="#"><i class="fas fa-play mr-2"></i>Play Episode</a>
-                            </li>
-                        </ul>
-                    </div>
-                </article>
-
-
-            </div>
-        </section>
-
+<div class="container mt-4">
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="search event in instiki" aria-label="Recipient's username" aria-describedby="basic-addon2">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary text-center " type="button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                </svg>
+          </button>
+        </div>
     </div>
+</div>
+
+<div class="row p-5">
+    @forelse ($event as $item )
+    <div class="card m-2" style="width: 400px;">
+        <img src="{{url('public/Image/'.$item->id.'/'. $item->image)}}" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5>Judul</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+        <a href="#" class="stretched-link"></a>
+    </div>
+    @empty
+
+    @endforelse
 
 </div>
 

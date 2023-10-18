@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
+    <link rel="stylesheet" href="{{asset('scss/main/main.css')}}">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>SB Admin 2 - Dashboard</title>
     @vite('resources/sass/app.scss')

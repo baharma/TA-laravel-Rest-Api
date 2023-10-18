@@ -22,4 +22,12 @@ $icon-size: 48px;
         }
     }
 }
-
+.card-border-top{
+    border-top-right-radius: 0px !important;
+    border-top-left-radius: 0px !important;
+    margin-top: -5px;
+}
+.card-border-bottom{
+    border-bottom-left-radius: 0px !important;
+    border-bottom-right-radius: 0px !important;
+}
