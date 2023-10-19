@@ -33,6 +33,5 @@ class EventResource extends ResourceCollection
               ];
             })
         ];
-
     }
 }

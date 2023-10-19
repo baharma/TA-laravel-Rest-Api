@@ -38,7 +38,7 @@ class PostEventController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
