@@ -7,6 +7,7 @@ use App\Http\Resources\EventResource;
 use App\Models\PostEvent;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 
 class PostEventController extends Controller
 {
@@ -20,15 +21,15 @@ class PostEventController extends Controller
     public function index()
     {
         $data = $this->event->all();
-
-        $response = [
-            "status" => 200,
-            "message" => "success"
-        ];
-        $data_with_paginate = $data->json()->paginate();
-        $eventData = EventResource::collection($data_with_paginate)->additional($response);
-        return $eventData->response()->setStatusCode(200);
+        if (!Auth::check()) {
+            return response()->json([
+                'error' => true,
+                'message' => 'Unauthorized: You are not authenticated.',
+            ], 401);
+        }
+        return new EventResource($data);
     }
+
 
     /**
      * Show the form for creating a new resource.
