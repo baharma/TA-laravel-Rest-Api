@@ -27,6 +27,10 @@ class PostEventController extends Controller
                 'message' => 'Unauthorized: You are not authenticated.',
             ], 401);
         }
+        $items = collect($data)->map(function($event){
+            return $event->usersEvent;
+        });
+
         return new EventResource($data);
     }
 

@@ -38,7 +38,7 @@ class EventController extends Controller
             'address_event'=>$data['address_event'],
             'start_register'=>$data['start_register'],
             'end_register'=>$data['end_register'],
-            'Telp'=>$data['Telp'],
+            'tlp'=>$data['Telp'],
             'description'=>$data['description'],
             'slug'=>Str::slug($data['title_name']),
             'create_by'=>Auth::user()->id

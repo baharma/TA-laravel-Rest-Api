@@ -21,6 +21,8 @@ return new class extends Migration
             $table->string('password');
             $table->string('semester')->nullable();
             $table->string('role')->default('mahasiswa');
+            $table->string('profile_image')->nullable();
+            $table->string('nim')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class PostEvent extends Model
 {
@@ -19,12 +20,15 @@ class PostEvent extends Model
         'image',
         'address_event',
         'ukm_id',
-        'user_post',
+        'create_by',
+        'update_by',
         'start_register',
         'end_register',
         'tlp'
     ];
 
-
+    public function usersEvent(){
+        return  $this->hasOne(User::class,'id','create_by');
+    }
 
 }
