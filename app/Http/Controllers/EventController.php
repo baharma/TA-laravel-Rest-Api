@@ -30,8 +30,8 @@ class EventController extends Controller
         ]);
         $file = $request->file('image');
         $imageNameOri =$file->getClientOriginalName();
-        $extensi = $file->getClientOriginalExtension();
-        $imageName = $imageNameOri.'.'.$extensi;
+
+        $imageName = $imageNameOri;
         $item = [
             'title_name'=>$data['title_name'],
             'ukm_id'=>$data['ukm_id'] ?? null,
