@@ -12,7 +12,6 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
-
     /**
      * The attributes that are mass assignable.
      *
@@ -23,7 +22,9 @@ class User extends Authenticatable
         'email',
         'password',
         'semester',
-        'role'
+        'role',
+        'profile_image',
+        'nim'
     ];
 
     /**

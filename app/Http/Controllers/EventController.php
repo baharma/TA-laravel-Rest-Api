@@ -30,15 +30,15 @@ class EventController extends Controller
         ]);
         $file = $request->file('image');
         $imageNameOri =$file->getClientOriginalName();
-        $extensi = $file->getClientOriginalExtension();
-        $imageName = $imageNameOri.'.'.$extensi;
+
+        $imageName = $imageNameOri;
         $item = [
             'title_name'=>$data['title_name'],
             'ukm_id'=>$data['ukm_id'] ?? null,
             'address_event'=>$data['address_event'],
             'start_register'=>$data['start_register'],
             'end_register'=>$data['end_register'],
-            'Telp'=>$data['Telp'],
+            'tlp'=>$data['Telp'],
             'description'=>$data['description'],
             'slug'=>Str::slug($data['title_name']),
             'create_by'=>Auth::user()->id

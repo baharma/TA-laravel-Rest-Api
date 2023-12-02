@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\PostEventController;
+use App\Http\Controllers\Api\UserApiController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -35,7 +36,15 @@ Route::get('/user-profile', [AuthController::class, 'userProfile']);
 
 
 Route::group(['middleware'=>['auth:sanctum']],function(){
-    Route::get('/list-post',[PostEventController::class,'index']);
+    Route::controller(PostEventController::class)->group(function(){
+        Route::get('/list-post','index');
+        Route::post('/register-event','registerEvent');
+    });
+    Route::controller(UserApiController::class)->group(function(){
+        Route::get('/detail/user','getDetailUser');
+        Route::post('/update-user/{id}','userUpdate');
+    });
+
 });
 
 

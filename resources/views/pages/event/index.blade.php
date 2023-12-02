@@ -65,7 +65,7 @@
         </div>
         <div class="row mt-2">
             <div class="col-lg-5">
-                <x-component-main.input-form idname="tlp" labels="Telp" nameInput="Telp" type="number"
+                <x-component-main.input-form idname="tlp" labels="Telp" nameInput="tlp" type="number"
                     pleceholder="Input Telp " />
                 @error('title_name')
                 <div class="invalid-feedback d-block">{{ $message }}</div>

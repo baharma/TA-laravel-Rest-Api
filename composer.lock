@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5aa88c1356410e8b02e5770989a30560",
+    "content-hash": "10a68a590adbd0e6a1a3b7dab0d9f7e7",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -8323,16 +8323,16 @@
         },
         {
             "name": "knuckleswtf/scribe",
-            "version": "4.21.0",
+            "version": "4.25.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/knuckleswtf/scribe.git",
-                "reference": "4cf022bd8834158dfb97def0e4b22f7f1b2cd779"
+                "reference": "e45e3afc5f97008294b9c18edd16666223e486a2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/knuckleswtf/scribe/zipball/4cf022bd8834158dfb97def0e4b22f7f1b2cd779",
-                "reference": "4cf022bd8834158dfb97def0e4b22f7f1b2cd779",
+                "url": "https://api.github.com/repos/knuckleswtf/scribe/zipball/e45e3afc5f97008294b9c18edd16666223e486a2",
+                "reference": "e45e3afc5f97008294b9c18edd16666223e486a2",
                 "shasum": ""
             },
             "require": {
@@ -8406,7 +8406,7 @@
             ],
             "support": {
                 "issues": "https://github.com/knuckleswtf/scribe/issues",
-                "source": "https://github.com/knuckleswtf/scribe/tree/4.21.0"
+                "source": "https://github.com/knuckleswtf/scribe/tree/4.25.0"
             },
             "funding": [
                 {
@@ -8414,7 +8414,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2023-05-29T15:50:25+00:00"
+            "time": "2023-09-29T22:23:01+00:00"
         },
         {
             "name": "laravel/breeze",

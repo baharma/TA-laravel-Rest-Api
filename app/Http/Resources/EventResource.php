@@ -23,16 +23,15 @@ class EventResource extends ResourceCollection
                 'title_name' => $event->title_name ?? null,
                 'slug' => $event->slug ?? null,
                 'description' => $event->description ?? null,
-                'image' => $event->image ?? null,
+                'image' => url('public/Image/'.$event->id.'/'. $event->image) ?? null,
                 'address_event' => $event->address_event ?? null,
                 'ukm_id' => $event->ukm_id ?? null,
-                'user_post' => $event->user_post ?? null,
+                'create_by' => $event->usersEvent->name ?? null,
                 'start_register' => $event->start_register ?? null,
                 'end_register' => $event->end_register ?? null,
                 'tlp' => $event->tlp ?? null,
               ];
             })
         ];
-
     }
 }
