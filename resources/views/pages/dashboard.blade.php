@@ -26,16 +26,18 @@
             <img src="{{url('public/Image/'.$item->id.'/'. $item->image)}}"
                 style="width: 300px; height: 300px;object-fit: contain" class="card-img-top" alt="Event 3">
             <div class="card-body">
-                <h5 class="card-title">Event 3</h5>
-                <p class="card-text">Deskripsi singkat tentang Event 3.</p>
-                <a href="#" class="btn btn-primary">Detail Event</a>
+                <h5 class="card-title">{{ $item->title_name }}</h5>
+                <p class="card-text">{{ $item->description }}</p>
+                <a href="{{ route('event-detail',$item->id) }}" class="btn btn-primary">Detail Event</a><br>
+                <small>registration close: <br>
+                    {{ date('Y-m-d', strtotime($item->end_register)) }}</small>
             </div>
         </div>
     </div>
     @empty
     <h1>No Event</h1>
     @endforelse
-
+    {{ $event->links() }}
 </div>
 
 @endsection

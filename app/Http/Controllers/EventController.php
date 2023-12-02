@@ -38,7 +38,7 @@ class EventController extends Controller
             'address_event'=>$data['address_event'],
             'start_register'=>$data['start_register'],
             'end_register'=>$data['end_register'],
-            'tlp'=>$data['Telp'],
+            'tlp'=>$data['tlp'],
             'description'=>$data['description'],
             'slug'=>Str::slug($data['title_name']),
             'create_by'=>Auth::user()->id
@@ -50,6 +50,10 @@ class EventController extends Controller
         $modal->update(['image' => $imageName]);
 
         return to_route('dashboard');
+    }
+
+    public function detailEvent(PostEvent $event){
+        return view("pages.event.detail-event",compact('event'));
     }
 
 }
