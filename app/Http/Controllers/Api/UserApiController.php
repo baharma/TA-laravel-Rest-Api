@@ -24,7 +24,7 @@ class UserApiController extends Controller
     }
 
     public function userUpdate(Request $request,$id){
-        dd($request->semester);
+
         $user = User::find($id);
         $data = $request->all();
         $request->validate([
@@ -46,6 +46,5 @@ class UserApiController extends Controller
         return response()->json([
             'message' => 'succes update'
         ], 200);
-
     }
 }
